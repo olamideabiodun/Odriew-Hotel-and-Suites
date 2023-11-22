@@ -1,0 +1,7 @@
+------------------------------| CUSTOMER RECEIPT |-----------------------------------
+=====| NAME :
+=====| Email :
+=====| Number :
+=====| Service provided : 
+=====| Transaction ID :
+==============================| THANKS FOR YOUR PATRONAGE |===========================

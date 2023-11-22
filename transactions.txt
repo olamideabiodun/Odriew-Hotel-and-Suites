@@ -1,0 +1,4 @@
+
+--------------------------------| ALL transactions |----------------------------------
+
+Room_number | transaction ID | Customer name | Customer email | Customer Number | date
