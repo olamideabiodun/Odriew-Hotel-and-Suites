@@ -4,4 +4,6 @@
 =====| Number :
 =====| Service provided : 
 =====| Transaction ID :
+=====| DATE : dd|mm|yy
+=====| DISCOUNT :
 ==============================| THANKS FOR YOUR PATRONAGE |===========================

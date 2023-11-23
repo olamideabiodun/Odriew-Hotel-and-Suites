@@ -32,6 +32,7 @@ int main()
             PrivacyPolicy();
             break;
         case 6:
+            printf("Goodbye, exiting the program...\n");
             break;
         default:
         printf("\nPlease select available service.\n");
@@ -45,6 +46,7 @@ int main()
 */
 void Mainmenu()
 {
+    clear_terminal();
     printf("\n************** | ODRIEW HOTEL AND SUITES | **************");
     printf("\n\n========== Main Menu ==========\n");
     printf("\n1. Reservation Management\n");
@@ -53,7 +55,6 @@ void Mainmenu()
     printf("\n4. Customer Support\n");
     printf("\n5. Privacy Policy\n");
     printf("\n6. Exit\n");
-
 }
 
 
@@ -64,6 +65,7 @@ void ReservationManagement()
 {
     int select;
 
+    clear_terminal();
     printf("\n========== RESERVATION MANAGEMENT ==========\n");
     printf("\n1. Reserve a room\n");
     printf("\n2. Business Conference\n");
@@ -99,6 +101,7 @@ void CustomerManagement()
 {
     int select;
 
+    clear_terminal();
     printf("\n========== CUSTOMER MANAGEMENT ==========\n");
     // printf("\nEnter your username: \n");
     // printf("\nEnter your number: \n");
@@ -118,20 +121,24 @@ void CustomerManagement()
 
 }
 
-/**
- * MealManagement - displays meal management menu
-*/
+
 void Admin()
 {
     int ID = 6999;
     int input;
     int select;
+    int room_number;
+    double price;
+    char room_type[100];
+    int back;
 
+    clear_terminal();
     printf("Please enter Admin ID: \n");
     scanf("%d", &input);
 
     if (input == ID)
     {
+        clear_terminal();
         printf("\n========== ADMIN MANAGEMENT ==========\n");
         printf("\n1. Create New Room\n");
         printf("\n2. Check Available Rooms\n");
@@ -151,6 +158,73 @@ void Admin()
     {
         printf("Incorrect ID.\n");
     }
+    if (select == 1)
+    {
+        clear_terminal();
+        // GetRoomInfo(&room_number, room_type, &price);
+        SaveRoomInfo("HotelData/all_rooms.txt", room_number, room_type, price);
+        SaveRoomInfo("HotelData/available_rooms.txt", room_number, room_type, price);
+        clear_terminal();
+        printf("\n*********** ROOM CREATED SUCCESSFULLY! ***********\n");
+        printf("\n1. Check All Rooms\n");
+        printf("\n2. Back\n");
+        scanf("%d", &select);
+        if (select == 1)
+        {
+            clear_terminal();
+            displayfile("HotelData/all_rooms.txt");
+            printf("\n-----------------------------------------------\n");
+            printf("\nPress 0 to go back\n");
+            scanf("%d", &back);
+            if (back == 0)
+            {
+                Admin();
+            }
+            else return;
+        }
+        else if (select == 2)
+        {
+            Admin();
+        }
+        else {
+            printf("\nPlease select a valid option\n");
+            Admin();
+
+        }
+    }
+    else if (select == 2)
+    {
+        clear_terminal();
+        displayfile("HotelData/available_rooms.txt");
+        printf("\n--------------------------------\n");
+        printf("\nPress 0 to go back\n");
+        scanf("%d", &select);
+        if(select == 0)
+        {
+            clear_terminal();
+            Admin();
+        }
+        else
+        {
+            Mainmenu();
+        }
+        
+    }
+    else if (select == 3)
+    {
+        clear_terminal();
+        printf("-------------------| Delete a room |-------------------\n");
+        displayfile("HotelData/available_rooms.txt");
+        // delete room function
+        printf("\nPress 0 to go back\n");
+        scanf("%d", &back);
+        if (back == 0)
+        {
+            Admin();
+        } else 
+        return;
+    }
+    return;
 }
 
 /**
@@ -158,6 +232,7 @@ void Admin()
 */
 void CustomerSupport()
 {
+    clear_terminal();
     printf("\n========== CUSTOMER SUPPORT ==========\n");
     printf("\nEnter Username: \n");
     // scanf()
@@ -170,6 +245,7 @@ void CustomerSupport()
 */
 void PrivacyPolicy()
 {
-    displayfile("privacy_policy.txt");
+    clear_terminal();
+    displayfile("HotelData/privacy_policy.txt");
 }
 
